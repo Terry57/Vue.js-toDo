@@ -85,8 +85,7 @@
 <body>
     
     <div id="app">
-        <h1 class="animate__animated animate__rubberBand">Vue.js To-Do List</h1> 
-     
+        <h1 class="animate__animated animate__rubberBand">Vue.js To-Do List</h1>      
         <input v-model="newTask" name="New Task..." v-on:keyup.enter="saveTask" placeholder="New Task">
         <ol>
             <li v-for="task in tasks">
@@ -97,11 +96,8 @@
                 </span>
                 <i v-bind:class="task.done ? 'fa fa-check' : 'fa fa-exclamation-circle'"></i>             
             </li>            
-        </ol>
-        <button type="button" class="btn btn-danger" onclick="window.location.href='vueJs.html';">Clear All</button> 
-        <button type="button" v-on:click="clearAll()" class="btn btn-danger">Clear All</button>
-        
-        
+        </ol>     
+        <button type="button" class="btn btn-danger" v-on:click="clearTasks()">Clear Tasks</button>       
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -110,9 +106,8 @@
             el: '#app',
             data: {
                 newTask: null,
-                tasks: [
-              
-                ],
+                tasks: [             
+                ],                
                 saveTask: function() {
                     if (this.newTask == null) {
                         alert('Enter a task!');
@@ -129,8 +124,8 @@
                         return e.subject != task.subject;
                     });
                 },
-                clearAll: function(){
-                    this.task = [];
+                clearTasks: function() {
+                        this.tasks = [];
                 }
             }
         });
